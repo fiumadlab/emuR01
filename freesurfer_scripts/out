@@ -1,0 +1,38 @@
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@n086>
+Subject: Job 813134: <python run_recon_emu_lsf_tmp.py> Exited
+
+Job <python run_recon_emu_lsf_tmp.py> was submitted from host <u02> by user <akimb009> in cluster <panther>.
+Job was executed on host(s) <n086>, in queue <PQ_madlab>, as user <akimb009> in cluster <panther>.
+</home/akimb009> was used as the home directory.
+</home/data/madlab/scripts/emuR01/freesurfer_scripts> was used as the working directory.
+Started at Thu Aug 16 14:29:11 2018
+Results reported at Thu Aug 16 14:29:16 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python run_recon_emu_lsf_tmp.py
+------------------------------------------------------------
+
+Exited with exit code 134.
+
+Resource usage summary:
+
+    CPU time   :      2.22 sec.
+    Max Memory :         2 MB
+    Max Swap   :        46 MB
+
+    Max Processes  :         1
+    Max Threads    :         1
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <err> for stderr output of this job.
+
