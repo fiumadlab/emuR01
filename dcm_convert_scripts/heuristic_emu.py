@@ -7,29 +7,29 @@ def create_key(template, outtype=('nii.gz',), annotation_classes=None):
 
 def infotodict(seqinfo):
     """Heuristic evaluator for determining which runs belong where
-    
-    allowed template fields - follow python string module: 
-    
-    item: index within category 
-    subject: participant id 
+
+    allowed template fields - follow python string module:
+
+    item: index within category
+    subject: participant id
     seqitem: run number during scanning
     subindex: sub index within group
     """
-    
-    rs = create_key('rsfmri/rest_run{item:03d}/rest', outtype=('dicom', 'nii.gz'))
-    study_r1 = create_key('BOLD/study_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
-    study_r2 = create_key('BOLD/study_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
-    test_r1 = create_key('BOLD/test_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
-    test_r2 = create_key('BOLD/test_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
-    test_r3 = create_key('BOLD/test_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
-    fmstudy = create_key('fieldmap/fm_study_{item:03d}', outtype=('dicom', 'nii.gz'))
-    fmtest = create_key('fieldmap/fm_test_{item:03d}', outtype=('dicom', 'nii.gz'))
-    fmrest = create_key('fieldmap/fm_rest_{item:03d}', outtype=('dicom', 'nii.gz'))
-    fmdwi = create_key('fieldmap/fm_dwi_{item:03d}', outtype=('dicom', 'nii.gz'))
-    dwi = create_key('dmri/dwi_{item:03d}', outtype=('dicom', 'nii.gz'))
-    t1 = create_key('anatomy/T1_{item:03d}', outtype=('dicom', 'nii.gz'))
-    pd = create_key('anatomy/PD_{item:03d}', outtype=('dicom', 'nii.gz'))
-    info = {rs: [], study_r1: [], study_r2: [], test_r1: [], test_r3: [], 
+
+    rs = create_key('{subject}/{session}/rsfmri/rest_run{item:03d}/rest', outtype=('dicom', 'nii.gz'))
+    study_r1 = create_key('{subject}/{session}/BOLD/study_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
+    study_r2 = create_key('{subject}/{session}/BOLD/study_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
+    test_r1 = create_key('{subject}/{session}/BOLD/test_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
+    test_r2 = create_key('{subject}/{session}/BOLD/test_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
+    test_r3 = create_key('{subject}/{session}/BOLD/test_run{item:03d}/bold', outtype=('dicom', 'nii.gz'))
+    fmstudy = create_key('{subject}/{session}/fieldmap/fm_study_{item:03d}', outtype=('dicom', 'nii.gz'))
+    fmtest = create_key('{subject}/{session}/fieldmap/fm_test_{item:03d}', outtype=('dicom', 'nii.gz'))
+    fmrest = create_key('{subject}/{session}/fieldmap/fm_rest_{item:03d}', outtype=('dicom', 'nii.gz'))
+    fmdwi = create_key('{subject}/{session}/fieldmap/fm_dwi_{item:03d}', outtype=('dicom', 'nii.gz'))
+    dwi = create_key('{subject}/{session}/dmri/dwi_{item:03d}', outtype=('dicom', 'nii.gz'))
+    t1 = create_key('{subject}/{session}/anatomy/T1_{item:03d}', outtype=('dicom', 'nii.gz'))
+    pd = create_key('{subject}/{session}/anatomy/PD_{item:03d}', outtype=('dicom', 'nii.gz'))
+    info = {rs: [], study_r1: [], study_r2: [], test_r1: [], test_r3: [],
             test_r3: [], fmstudy: [], fmtest: [], fmrest: [],
             fmdwi: [], dwi: [], t1: [], pd: []}
     last_run = len(seqinfo)
