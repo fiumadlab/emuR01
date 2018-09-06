@@ -8,7 +8,7 @@
 
 import os
 import subprocess as sp
-subjs = ['4000', '4001', '4005', '4012']
+subjs = ['4000', '4001', '4002', '4005', '4012']
 session = ['s1', 's2']
 
 workdir = '/scratch/madlab/emu/dcm_convert'
