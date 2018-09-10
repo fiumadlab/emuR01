@@ -50,13 +50,13 @@ def infotodict(seqinfo):
         elif (sl > 1) and (nt == 103) and ('dMRI' in s[12]):
             info[dwi].append(s[2])
         elif s[12] in ('fMRI_DistortionMap_AP_Rest', 'fMRI_DistortionMap_PA_Rest'):
-            info[fmrest].append(s[2])
+            info[fmrest].append({'item':s[2], 'dir':s[12][-8:-6]})
         elif s[12] in ('fMRI_DistortionMap_AP_PS_STUDY', 'fMRI_DistortionMap_PA_PS_STUDY'):
-            info[fmstudy].append(s[2])
+            info[fmstudy].append({'item':s[2], 'dir':s[12][-11:-9]})
         elif s[12] in ('fMRI_DistortionMap_AP_Test', 'fMRI_DistortionMap_PA_PS_Test'):
-            info[fmtest].append(s[2])
+            info[fmtest].append({'item':s[2], 'dir':s[12][-10:-8]})
         elif s[12] in ('dMRI_DistortionMap_AP_dMRI', 'dMRI_DistortionMap_PA_dMRI'):
-            info[fmdwi].append(s[2])
+            info[fmdwi].append({'item':s[2], 'dir':s[12][-7:-5]})
         elif (sl == 30) and ('pd_tse_Cor_T2' in s[12]):
             info[pd].append(s[2])
         else:
