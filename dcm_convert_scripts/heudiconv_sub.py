@@ -8,9 +8,11 @@ for subject in SUBJECTS:
         if not \
         os.path.exists('/home/data/madlab/dicoms/emu_r01/{1}/{0}/{1}.tar.gz'.format(sess, subject)):
             continue
-        heudi_cmd = "heudiconv -b -d '/home/data/madlab/dicoms/emu_r01/{1}/{0}/*.tar.gz' \
-        -ss {0} -s {1} -f /home/data/madlab/scripts/emuR01/dcm_convert_scripts/heuristic_emu.py \
-        -o /home/data/madlab/data/mri/emuR01/".format(sess, subject)
+        heudi_cmd = \
+        "heudiconv -b -d '/home/data/madlab/dicoms/emu_r01/{1}/{0}/*.tar.gz' \
+        -ss {0} -s {1} \
+        -f /home/data/madlab/scripts/emuR01/dcm_convert_scripts/heuristic_emu_heudi.py \
+        -o /scratch/madlab/dicoms/emuR01/".format(sess, subject)
         sp.Popen(['sbatch', '-J heudiconv_{0}_{1}'.format(subject, sess),
                   '-p investor', '--nodes 1', '--mail-type=END,FAIL',
                   '--mail-user=akimbler@fiu.edu',
