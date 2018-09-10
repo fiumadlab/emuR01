@@ -16,4 +16,4 @@ for subject in SUBJECTS:
         sp.Popen('sbatch -J heudiconv_{0}_{1} \
                   -p investor -N 1 --mail-type=END,FAIL \
                   --mail-user=akimbler@fiu.edu \
-                  --qos pq_madlab --wrap="{2}"'.format(subject, sess, heudi_cmd)])
+                  --qos pq_madlab --wrap="{2}"'.format(subject, sess, heudi_cmd))
