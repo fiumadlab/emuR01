@@ -22,8 +22,8 @@ def infotodict(seqinfo):
     test_r3 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-test_run-03_bold')
     fmfunc = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-func_dir-{dir}_run-{item:02d}_epi')
     fmdwi = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-dwi_dir-{dir}_run-{item:02d}_epi')
-    dwi = create_key('sub-{subject}/{session}/dwi/sub-{subject}_{session}_dwi-{item:02d}_dwi')
-    t1 = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_T1-{item:02d}_T1w')
+    dwi = create_key('sub-{subject}/{session}/dwi/sub-{subject}_{session}_run-{item:02d}_dwi')
+    t1 = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_run-{item:02d}_T1w')
     pd = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_PD')
     info = {rest: [], study_r1: [], study_r2: [], test_r1: [], test_r2: [],
             test_r3: [], fmfunc: [], fmdwi: [], dwi: [], t1: [], pd: []}
@@ -53,7 +53,7 @@ def infotodict(seqinfo):
         elif 'DistortionMap_PA' in s[12]:
             info[fmfunc].append({'item':s[2], 'dir':'PA'})
         elif (sl == 30) and ('pd_tse_Cor_T2' in s[12]):
-            info[pd].append(s[2])
+            info[pd] = [s[2]]
         else:
             pass
     return info
