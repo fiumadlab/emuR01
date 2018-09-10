@@ -6,10 +6,10 @@ SESSIONS = ['S1', 'S2']
 for subject in SUBJECTS:
     for sess in SESSIONS:
         if not \
-        os.path.exists('/home/data/madlab/dicoms/emu_r01/{1}/{0}/{1}.tar.gz'.format(sess, subject)):
+        os.path.exists('/home/data/madlab/dicoms/emu_r01/{1}/{0}/{0}.tar.gz'.format(sess, subject)):
             continue
         heudi_cmd = \
-        "heudiconv -b -d '/home/data/madlab/dicoms/emu_r01/{1}/{0}/*.tar.gz' \
+        "heudiconv -b -d '/home/data/madlab/dicoms/emu_r01/{1}/{0}/{0}.tar.gz' \
         -ss {0} -s {1} \
         -f /home/data/madlab/scripts/emuR01/dcm_convert_scripts/heuristic_emu_heudi.py \
         -o /scratch/madlab/dicoms/emuR01/".format(sess, subject)
