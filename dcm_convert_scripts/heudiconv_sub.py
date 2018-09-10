@@ -13,7 +13,7 @@ for subject in SUBJECTS:
         -ss {0} -s {1} \
         -f /home/data/madlab/scripts/emuR01/dcm_convert_scripts/heuristic_emu_heudi.py \
         -o /scratch/madlab/dicoms/emuR01/".format(sess, subject)
-        sp.Popen(['sbatch', '-J heudiconv_{0}_{1}'.format(subject, sess),
-                  '-p investor', '-N 1', '--mail-type=END,FAIL',
-                  '--mail-user=akimbler@fiu.edu',
-                  '--qos pq_madlab', '--wrap="{0}"'.format(heudi_cmd)])
+        sp.Popen('sbatch -J heudiconv_{0}_{1} \
+                  -p investor -N 1 --mail-type=END,FAIL \
+                  --mail-user=akimbler@fiu.edu \
+                  --qos pq_madlab --wrap="{2}"'.format(subject, sess, heudi_cmd)])
