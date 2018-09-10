@@ -14,19 +14,19 @@ def infotodict(seqinfo):
     subindex: sub index within group
     """
 
-    rest = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_run-{item:03d}_bold')
-    study_r1 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-study_run-{item:03d}_bold')
-    study_r2 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-study_run-{item:03d}_bold')
-    test_r1 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-test_run-{item:03d}_bold')
-    test_r2 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-test_run-{item:03d}_bold')
-    test_r3 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-test_run-{item:03d}_bold')
-    fmstudy = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-func_dir-{dir}_fm_study_{item:03d}_epi')
-    fmtest = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-func_dir-{dir}_fm_test_{item:03d}_epi')
-    fmrest = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-func_dir-{dir}_fm_rest_{item:03d}_epi')
-    fmdwi = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-dwi_dir-{dir}_fm_dwi_{item:03d}_epi')
-    dwi = create_key('sub-{subject}/{session}/dwi/sub-{subject}_{session}_dwi_{item:03d}_dwi')
-    t1 = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_T1_{item:03d}_T1w')
-    pd = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_PD_{item:03d}_PD')
+    rest = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-rest_run-{item:02d}_bold')
+    study_r1 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-study_run-{item:02d}_bold')
+    study_r2 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-study_run-{item:02d}_bold')
+    test_r1 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-test_run-{item:02d}_bold')
+    test_r2 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-test_run-{item:02d}_bold')
+    test_r3 = create_key('sub-{subject}/{session}/func/sub-{subject}_{session}_task-test_run-{item:02d}_bold')
+    fmstudy = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-func_dir-{dir}_fm_study-{item:02d}_epi')
+    fmtest = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-func_dir-{dir}_fm_test-{item:02d}_epi')
+    fmrest = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-func_dir-{dir}_fm_rest-{item:02d}_epi')
+    fmdwi = create_key('sub-{subject}/{session}/fmap/sub-{subject}_{session}_acq-dwi_dir-{dir}_fm_dwi-{item:02d}_epi')
+    dwi = create_key('sub-{subject}/{session}/dwi/sub-{subject}_{session}_dwi-{item:02d}_dwi')
+    t1 = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_T1-{item:02d}_T1w')
+    pd = create_key('sub-{subject}/{session}/anat/sub-{subject}_{session}_PD')
     info = {rest: [], study_r1: [], study_r2: [], test_r1: [], test_r2: [],
             test_r3: [], fmstudy: [], fmtest: [], fmrest: [],
             fmdwi: [], dwi: [], t1: [], pd: []}
@@ -50,7 +50,7 @@ def infotodict(seqinfo):
         elif (sl > 1) and (nt == 103) and ('dMRI' in s[12]):
             info[dwi].append(s[2])
         elif s[12] in ('fMRI_DistortionMap_AP_Rest', 'fMRI_DistortionMap_PA_Rest'):
-            info[fmrest].append({'item':s[2], 'dir':s[12][-8:-6]})
+            info[fmrest].append({'item':s[2], 'dir':s[12][-7:-5]})
         elif s[12] in ('fMRI_DistortionMap_AP_PS_STUDY', 'fMRI_DistortionMap_PA_PS_STUDY'):
             info[fmstudy].append({'item':s[2], 'dir':s[12][-11:-9]})
         elif s[12] in ('fMRI_DistortionMap_AP_Test', 'fMRI_DistortionMap_PA_PS_Test'):
