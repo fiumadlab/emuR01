@@ -14,6 +14,6 @@ for subject in SUBJECTS:
         -f /home/data/madlab/scripts/emuR01/dcm_convert_scripts/heuristic_emu_heudi.py \
         -o /scratch/madlab/dicoms/emuR01/".format(sess, subject)
         sp.Popen(['sbatch', '-J heudiconv_{0}_{1}'.format(subject, sess),
-                  '-p investor', '--nodes 1', '--mail-type=END,FAIL',
+                  '-p investor', '-N 1', '--mail-type=END,FAIL',
                   '--mail-user=akimbler@fiu.edu',
                   '--qos pq_madlab', '--wrap="{0}"'.format(heudi_cmd)])
